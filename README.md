@@ -1,6 +1,6 @@
 
 <div >
-  <a href="https://www.socketweaver.com"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://sw-router.sfo2.cdn.digitaloceanspaces.com/landing/logo-dark-text-300.png" height="60px" alt="Home"></a>
+  <a href="https://www.socketweaver.com"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://sw-router.sfo2.cdn.digitaloceanspaces.com/landing/logo-dark-text-300.png" height="30px" alt="Home"></a>
 </div>
 
 ## Requirements
