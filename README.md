@@ -1,5 +1,7 @@
 # Third-person Shooter
 
+![Alt text](demo.gif?raw=true "SocketWeaver Third-person demo")
+
 ## Requirements
 1. Unity 2.18.3.4 or later. You can download the latest version of Unity here: https://unity3d.com/get-unity/download
 2. A SocketWeaver Account. You can create a SocketWeaver Account for free here: https://portal.socketweaver.com
