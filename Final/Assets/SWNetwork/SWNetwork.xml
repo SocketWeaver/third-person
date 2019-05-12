@@ -290,11 +290,6 @@
             Invoked when the local player connected to the lobby server.
             </summary>
         </member>
-        <member name="E:SWNetwork.SWLobby.OnLobbyDisconnectedEvent">
-            <summary>
-            Invoked when the local player failed to coneect to the lobby server.
-            </summary>
-        </member>
         <member name="E:SWNetwork.SWLobby.OnPlayerMessageEvent">
             <summary>
             Invoked when a new player message is received.
@@ -463,7 +458,7 @@
             <param name="customData">The string room custom data.</param>
             <param name="wantRT">Indicates whether the room requires RealTime service.</param>
             <param name="playerLimit">The maximum number of players can join the room.</param>
-            <param name="playerTimeToLive">The maximum amount of time a player can stay inactive before been removed from the room.</param>
+            <param name="playerTimeToLive">The maximum amount of time a player can stay inactive before been removed from the room</param>
             <param name="isPrivate">Indicates whether the room is private.</param>
             <param name="indexData">The index data of the room.</param>
             <param name="callback">The method to invoke when the create room operation is complete.</param>
@@ -555,6 +550,15 @@
             <param name="playerLimit">Indicates the maximum number of players can join the room.</param>
             <param name="callback">The method to invoke when the join room operation is complete.</param>
         </member>
+        <member name="M:SWNetwork.SWLobby.JoinOrCreateRoom(System.Boolean,System.Int32,System.Int32,System.Action{System.Boolean,SWNetwork.SWJoinRoomReply,SWNetwork.SWLobbyError})">
+            <summary>
+            Called by players to begin an asynchronous operation to randomly join a room in the Lobby server. If no available rooms were found, The player will create a new room with the specified wantRT, playerLimit, and playerTimeToLive. This method allows players to join the public rooms.
+            </summary>
+            <param name="wantRT">Indicates if the room requires RealTime service.</param>
+            <param name="playerLimit">Indicates the maximum number of players can join the room.</param>
+            <param name="playerTimeToLive">The maximum amount of time a player can stay inactive before been removed from the room.</param>
+            <param name="callback">The method to invoke when the join room operation is complete.</param>
+        </member>
         <member name="M:SWNetwork.SWLobby.GetPlayersInRoom(System.Action{System.Boolean,SWNetwork.SWGetPlayersReply,SWNetwork.SWLobbyError})">
             <summary>
             Called by players to begin an asynchronous operation to get the players information of the local player's current room in the Lobby server.
@@ -602,12 +606,12 @@
             The logging level.
             </summary>
         </member>
-        <member name="M:SWNetwork.NetworkClient.CheckIn">
+        <member name="M:SWNetwork.NetworkClient.CheckIn(System.Action{System.Boolean,System.String})">
             <summary>
             Checking into the SocketWeaver services with a random generated unique player Id.
             </summary>
         </member>
-        <member name="M:SWNetwork.NetworkClient.CheckIn(System.String)">
+        <member name="M:SWNetwork.NetworkClient.CheckIn(System.String,System.Action{System.Boolean,System.String})">
             <summary>
             Checking into the SocketWeaver services with specified player Id. Make sure the playerId is unique.
             </summary>
@@ -687,47 +691,45 @@
         </member>
         <member name="M:SWNetwork.SceneSpawner.SpawnForPlayer(System.Int32,System.Int32)">
             <summary>
-            Spawns for player.
+            Spawns networked GameObject for player.
             </summary>
             <param name="prefabIndex">Prefab index.</param>
             <param name="spawnPointIndex">Spawn point index.</param>
         </member>
         <member name="M:SWNetwork.SceneSpawner.SpanwForNonPlayer(System.Int32,System.Int32)">
             <summary>
-            Spanws for non-player.
+            Spanws networked GameObject for non-player.
             </summary>
             <param name="prefabIndex">Prefab index.</param>
             <param name="spawnPointIndex">Spawn point index.</param>
         </member>
-        <member name="M:SWNetwork.SceneSpawner.SpawnForPlayer(System.Int32,UnityEngine.Vector3)">
+        <member name="M:SWNetwork.SceneSpawner.SpawnForPlayer(System.Int32,UnityEngine.Vector3,UnityEngine.Quaternion)">
             <summary>
-            Spawns for player.
+            Spawns networked GameObject for player.
             </summary>
             <param name="prefabIndex">Prefab index.</param>
             <param name="position">Position.</param>
         </member>
-        <member name="M:SWNetwork.SceneSpawner.SpanwForNonPlayer(System.Int32,UnityEngine.Vector3)">
+        <member name="M:SWNetwork.SceneSpawner.SpanwForNonPlayer(System.Int32,UnityEngine.Vector3,UnityEngine.Quaternion)">
             <summary>
-            Spanws for non-player.
+            Spanws networked GameObject for non-player.
             </summary>
             <param name="prefabIndex">Prefab index.</param>
             <param name="position">Position.</param>
         </member>
         <member name="M:SWNetwork.SceneSpawner.DestroyGameObject(UnityEngine.GameObject)">
             <summary>
-            Destroies the game object.
+            Destroies the networked GameObject.
             </summary>
             <param name="gameObject">Game object.</param>
         </member>
         <member name="M:SWNetwork.SceneSpawner.PlayerFinishedSceneSetup">
             <summary>
-            Players the finished scene setup.
             Tell the spawner that we have finished setting up the scene. you will get a true boolean flag for the OnReady event when the SceneSpawn becomes ready next time.
             </summary>
         </member>
         <member name="M:SWNetwork.SceneSpawner.HostFinishedSceneSetup">
             <summary>
-            Hosts the finished scene setup.
             Tell the spawner that we have finished setting up the scene. you will get a true boolean flag for the OnHostReady event when the SceneSpawn becomes ready next time.
             </summary>
         </member>
@@ -901,6 +903,11 @@
         <member name="F:SWNetwork.SWSpawnerRecord.v">
             <summary>
             position.
+            </summary>
+        </member>
+        <member name="F:SWNetwork.SWSpawnerRecord.r">
+            <summary>
+            rotation.
             </summary>
         </member>
     </members>

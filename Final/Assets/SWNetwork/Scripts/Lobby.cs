@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using SWNetwork;
+using SWNetwork; 
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -34,9 +34,6 @@ public class Lobby : MonoBehaviour
         // Add an event handler for the OnLobbyConncetedEvent
         NetworkClient.Lobby.OnLobbyConncetedEvent += Lobby_OnLobbyConncetedEvent;
 
-        // Add an event handler for the OnLobbyDisconnectedEvent
-        NetworkClient.Lobby.OnLobbyDisconnectedEvent += Lobby_OnLobbyDisconnectedEvent;
-
         // allow player to register
         registerButton.gameObject.SetActive(true);
         playButton.gameObject.SetActive(false);
@@ -48,7 +45,6 @@ public class Lobby : MonoBehaviour
         NetworkClient.Lobby.OnRoomReadyEvent -= Lobby_OnRoomReadyEvent;
         NetworkClient.Lobby.OnFailedToStartRoomEvent -= Lobby_OnFailedToStartRoomEvent;
         NetworkClient.Lobby.OnLobbyConncetedEvent -= Lobby_OnLobbyConncetedEvent;
-        NetworkClient.Lobby.OnLobbyDisconnectedEvent -= Lobby_OnLobbyDisconnectedEvent;
     }
 
     /* Lobby events handlers */
@@ -70,11 +66,6 @@ public class Lobby : MonoBehaviour
         RegisterPlayer();
     }
 
-    void Lobby_OnLobbyDisconnectedEvent()
-    {
-        Debug.Log("Lobby disconnected");
-    }
-
     /* UI event handlers */
     /// <summary>
     /// Register button was clicked
@@ -86,12 +77,24 @@ public class Lobby : MonoBehaviour
         if(customPlayerId != null && customPlayerId.Length > 0)
         {
             // use the user entered playerId to check into SocketWeaver. Make sure the PlayerId is unique.
-            NetworkClient.Instance.CheckIn(customPlayerId);
+            NetworkClient.Instance.CheckIn(customPlayerId,(bool ok, string error) =>
+            {
+                if (!ok)
+                {
+                    Debug.LogError("Check-in failed: " + error);
+                }
+            });
         }
         else
         {
             // use a randomly generated playerId to check into SocketWeaver.
-            NetworkClient.Instance.CheckIn();
+            NetworkClient.Instance.CheckIn((bool ok, string error) =>
+            {
+                if (!ok)
+                {
+                    Debug.LogError("Check-in failed: " + error);
+                }
+            });
         }
     }
 
@@ -101,7 +104,7 @@ public class Lobby : MonoBehaviour
     public void Play()
     {
         // Here we use the JoinOrCreateRoom method to get player into rooms quickly.
-        NetworkClient.Lobby.JoinOrCreateRoom(true, 2, HandleJoinOrCreatedRoom);
+        NetworkClient.Lobby.JoinOrCreateRoom(true, 2, 60, HandleJoinOrCreatedRoom);
     }
 
     /* Lobby helper methods*/
