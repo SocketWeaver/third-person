@@ -11,11 +11,11 @@ public class GameSceneManager : MonoBehaviour
     public GameObject winnerPanel;
     public GameObject gameOverPanel;
 
-    GameDataManager gameDataManager;
+    RoomPropertyAgent roomPropertyAgent;
 
     void Start()
     {
-        gameDataManager = GetComponent<GameDataManager>();
+        roomPropertyAgent = GetComponent<RoomPropertyAgent>();
     }
 
     public void Exit()
@@ -38,7 +38,7 @@ public class GameSceneManager : MonoBehaviour
     public void OnPlayerScoresChanged()
     {
         Debug.Log("OnPlayerScoreChanged");
-        PlayerScores playerScores = gameDataManager.GetPropertyWithName("PlayerScores").GetValue<PlayerScores>();
+        PlayerScores playerScores = roomPropertyAgent.GetPropertyWithName("PlayerScores").GetValue<PlayerScores>();
         Debug.Log(playerScores);
 
         if (playerScores != null && playerScores.scores != null)
@@ -64,7 +64,7 @@ public class GameSceneManager : MonoBehaviour
     public void PlayerScored(string playerId)
     {
         // Read the current value of the "PlayerScores" SyncProperty.
-        PlayerScores playerScores = gameDataManager.GetPropertyWithName("PlayerScores").GetValue<PlayerScores>();
+        PlayerScores playerScores = roomPropertyAgent.GetPropertyWithName("PlayerScores").GetValue<PlayerScores>();
 
         // Initialize the playerScores object.
         if (playerScores == null)
@@ -94,7 +94,7 @@ public class GameSceneManager : MonoBehaviour
         }
 
         // Modify the "PlayerScores" SyncProperty
-        gameDataManager.Modify<PlayerScores>("PlayerScores", playerScores);
+        roomPropertyAgent.Modify<PlayerScores>("PlayerScores", playerScores);
     }
 
     // OnSpawnerReady(bool alreadySetup) method is added to handle the On Ready Event.

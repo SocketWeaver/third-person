@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 47203779}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -609403171, guid: 6a67afbfe15ab9c4696e982c25d07a84, type: 3}
+  m_Script: {fileID: 1945091883, guid: 6a67afbfe15ab9c4696e982c25d07a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   properties_:
@@ -176,7 +176,6 @@ MonoBehaviour:
     name: PlayerScores
     type: 8
     conflictResolution: 0
-    compressed: 0
     data: 
     onValueChange:
       m_PersistentCalls:
@@ -201,11 +200,22 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     onReady:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 47203780}
+          m_MethodName: OnPlayerScoresChanged
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: SWNetwork.SWSyncedPropertyInitialFetchFinishedEvent, SWNetwork,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   restoreState: 1
-  dataManagerId: 1
+  AgentId: 1
 --- !u!114 &47203783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,6 +229,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  showVisibleGizmo: 1
+  Filterable: 0
+  visibleSize: 1
 --- !u!1 &142555660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1716,6 +1729,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  showVisibleGizmo: 1
+  Filterable: 0
+  visibleSize: 1
 --- !u!4 &969895539
 Transform:
   m_ObjectHideFlags: 0

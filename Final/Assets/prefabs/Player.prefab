@@ -256,6 +256,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  showVisibleGizmo: 1
+  Filterable: 0
+  visibleSize: 1
 --- !u!114 &63
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +275,7 @@ MonoBehaviour:
   syncedTransform:
     interpolate: 20
     smoothLevel: 3
+    snapDistance: 2
     readFunction: 0
     bandwidth: 5
     padding: 2
@@ -347,6 +351,7 @@ MonoBehaviour:
       valueType: 0
       minInt: -300
       maxInt: 300
+    externalFreeze: 0.2
   syncedAnimator:
     animator: {fileID: 0}
     syncParameters: []
@@ -372,7 +377,7 @@ MonoBehaviour:
   remoteEvents_:
   - eventName: fire
     Foldout: 1
-    excludeSelf: 0
+    target: 0
     remoteEvent:
       m_PersistentCalls:
         m_Calls:
@@ -391,7 +396,7 @@ MonoBehaviour:
         PublicKeyToken=null
   - eventName: killed
     Foldout: 1
-    excludeSelf: 0
+    target: 0
     remoteEvent:
       m_PersistentCalls:
         m_Calls:
@@ -425,7 +430,6 @@ MonoBehaviour:
     name: hp
     type: 2
     conflictResolution: 0
-    compressed: 0
     data: 
     onValueChange:
       m_PersistentCalls:
