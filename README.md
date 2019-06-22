@@ -13,7 +13,7 @@ In this tutorial, we are going to make a multiplayer top-down shooter.
 We will show you the process step-by-step. By the time you finished reading this tutorial, you will be ready to start converting your own game or explore more advanced features that our Unity SDK SWNetwork provides.
 
 ## Source Code
-The source code of this tutorial is hosted at: https://github.com/SocketWeaver/third-persion
+The source code of this tutorial is hosted at: https://github.com/SocketWeaver/third-person
 
 ### The repository has two Unity Projects:
 #### Starter
