@@ -298,7 +298,7 @@
             Event Data of the OnRoomReadyEvent
             </summary>
         </member>
-        <member name="E:SWNetwork.SWLobby.OnLobbyConncetedEvent">
+        <member name="E:SWNetwork.SWLobby.OnLobbyConnectedEvent">
             <summary>
             Invoked when the local player connected to the lobby server.
             </summary>
@@ -354,6 +354,11 @@
             Invoked when a new room message is received.
             </summary>
         </member>
+        <member name="E:SWNetwork.SWLobby.OnKickedEvent">
+            <summary>
+            Invoked when the player is kicked from the room by the room owner.
+            </summary>
+        </member>
         <member name="P:SWNetwork.SWLobby.PlayerId">
             <summary>
             Local player's Id
@@ -405,6 +410,14 @@
             <param name="pageIndex">Index of the page to get.</param>
             <param name="pageRowCount">Number of rooms in the page.</param>
             <param name="callback">The method to invoke when the get rooms operation is complete.</param>
+        </member>
+        <member name="M:SWNetwork.SWLobby.KickPlayers(System.Collections.Generic.List{System.String},System.Action{System.Boolean,SWNetwork.SWLobbyError})">
+            <summary>
+            Kicks the players.
+            Only the room owners can kick players
+            </summary>
+            <param name="playersToKick">Players to kick.</param>
+            <param name="callback">Callback.</param>
         </member>
         <member name="M:SWNetwork.SWLobby.CreateRoom(System.Boolean,System.Int32,System.Action{System.Boolean,System.String,SWNetwork.SWLobbyError})">
             <summary>
@@ -639,6 +652,36 @@
             The logging level.
             </summary>
         </member>
+        <member name="P:SWNetwork.NetworkClient.LobbyName">
+            <summary>
+            Gets the name of the lobby.
+            </summary>
+            <value>The name of the lobby.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkClient.NodeRegion1">
+            <summary>
+            Gets the name of the preferred node region.
+            </summary>
+            <value>The node region1.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkClient.NodeRegion2">
+            <summary>
+            Gets the name of the backup node region.
+            </summary>
+            <value>The node region2.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkClient.LobbyPing">
+            <summary>
+            Gets the lobby ping.
+            </summary>
+            <value>The lobby ping.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkClient.GameServerPing">
+            <summary>
+            Gets the game server ping.
+            </summary>
+            <value>The game server ping.</value>
+        </member>
         <member name="M:SWNetwork.NetworkClient.CheckIn(System.Action{System.Boolean,System.String})">
             <summary>
             Checking into the SocketWeaver services with a random generated unique player Id.
@@ -678,11 +721,30 @@
             Indicates if the Networked GameObject can be filtered by the RealtimeFilter.
             </summary>
         </member>
+        <member name="F:SWNetwork.NetworkID.SendRealtimeData">
+            <summary>
+            Indicates if the Networked GameObject sends Realtime data to the game server.
+            Default value is true. 
+            Only controls the behaviour of non-player Networked GameObjects
+            </summary>
+        </member>
         <member name="P:SWNetwork.NetworkID.NetworkObjectId">
             <summary>
             Gets the network object identifier. Automatically assign at run time.
             </summary>
             <value>The network object identifier.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkID.OwnerRemotePlayerId">
+            <summary>
+            Gets the owner remote playerId.
+            </summary>
+            <value>The owner remote player identifier.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkID.OwnerCustomPlayerId">
+            <summary>
+            Gets the owner custom playerId.
+            </summary>
+            <value>The owner custom player identifier.</value>
         </member>
         <member name="P:SWNetwork.NetworkID.IsOnline">
             <summary>
@@ -696,11 +758,35 @@
             </summary>
             <value><c>true</c> if is mine; otherwise, <c>false</c>.</value>
         </member>
+        <member name="P:SWNetwork.NetworkID.IsPlayer">
+            <summary>
+            Find out if networked GameObject is player controlled
+            </summary>
+            <value><c>true</c> if is player controlled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:SWNetwork.NetworkID.IsDynamicallySpawned">
+            <summary>
+            Find out if networked GameObject is dynamically spawned
+            All player controlled networked GameObject has to be dynamically spawned
+            </summary>
+            <value><c>true</c> if is dynamically spawned; otherwise, <c>false</c>.</value>
+        </member>
         <member name="P:SWNetwork.NetworkID.IsHost">
             <summary>
             Find out if the networked GameObject is owned by the room host
             </summary>
             <value><c>true</c> if is owned by the host; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:SWNetwork.NetworkID.Destroy">
+            <summary>
+            Destroies the networked GameObject across the network.
+            Use DestroyFixedNetworkedGameObject() to destroy FixedNetworkedGameObject
+            </summary>
+        </member>
+        <member name="M:SWNetwork.NetworkID.DestroyFixedNetworkedGameObject">
+            <summary>
+            Destroies the fixed networked game object.
+            </summary>
         </member>
         <member name="F:SWNetwork.RealtimeFilter.RangeBuffer">
             <summary>
@@ -889,6 +975,12 @@
             </summary>
             <param name="value">Value.</param>
         </member>
+        <member name="M:SWNetwork.SWSyncedPropertyAgent.Initialize">
+            <summary>
+            Attempts to initialize the SyncPropertyAgent.
+            Calling this method has no effect if the SyncPropertyAgent has already been initialized.
+            </summary>
+        </member>
         <member name="T:SWNetwork.SceneSpawnerReadyEvent">
             <summary>
             Scene spawner ready event.
@@ -920,9 +1012,9 @@
             <param name="prefabIndex">Prefab index.</param>
             <param name="spawnPointIndex">Spawn point index.</param>
         </member>
-        <member name="M:SWNetwork.SceneSpawner.SpanwForNonPlayer(System.Int32,System.Int32)">
+        <member name="M:SWNetwork.SceneSpawner.SpawnForNonPlayer(System.Int32,System.Int32)">
             <summary>
-            Spanws networked GameObject for non-player.
+            Spawns networked GameObject for non-player.
             </summary>
             <param name="prefabIndex">Prefab index.</param>
             <param name="spawnPointIndex">Spawn point index.</param>
@@ -934,18 +1026,25 @@
             <param name="prefabIndex">Prefab index.</param>
             <param name="position">Position.</param>
         </member>
-        <member name="M:SWNetwork.SceneSpawner.SpanwForNonPlayer(System.Int32,UnityEngine.Vector3,UnityEngine.Quaternion)">
+        <member name="M:SWNetwork.SceneSpawner.SpawnForNonPlayer(System.Int32,UnityEngine.Vector3,UnityEngine.Quaternion)">
             <summary>
-            Spanws networked GameObject for non-player.
+            Spawns networked GameObject for non-player.
             </summary>
             <param name="prefabIndex">Prefab index.</param>
             <param name="position">Position.</param>
         </member>
         <member name="M:SWNetwork.SceneSpawner.DestroyGameObject(UnityEngine.GameObject)">
             <summary>
-            Destroies the networked GameObject.
+            Destroies the networked GameObject across the network.
+            Use NetworkID.DestroyFixedNetworkedGameObject() to destroy FixedNetworkedGameObject
             </summary>
             <param name="gameObject">Game object.</param>
+        </member>
+        <member name="M:SWNetwork.SceneSpawner.Initialize">
+            <summary>
+            Attempts to initialize the SceneSpawner.
+            Calling this method has no effect if the SceneSpawner has already been initialized.
+            </summary>
         </member>
         <member name="M:SWNetwork.SceneSpawner.PlayerFinishedSceneSetup">
             <summary>
@@ -1109,6 +1208,16 @@
             Pop a Vector3 value from the message.
             </summary>
         </member>
+        <member name="F:SWNetwork.SWPlayerData.R">
+            <summary>
+            room playerId
+            </summary>
+        </member>
+        <member name="F:SWNetwork.SWPlayerData.P">
+            <summary>
+            remote playerId
+            </summary>
+        </member>
         <member name="F:SWNetwork.SWSpawnerRecord.n">
             <summary>
             networkObjectId
@@ -1119,17 +1228,27 @@
             prefab index
             </summary>
         </member>
+        <member name="F:SWNetwork.SWSpawnerRecord.s">
+            <summary>
+            spawnPoint index
+            </summary>
+        </member>
         <member name="F:SWNetwork.SWSpawnerRecord.t">
             <summary>
             NetworkObjectType
             </summary>
         </member>
-        <member name="F:SWNetwork.SWSpawnerRecord.vx">
+        <member name="F:SWNetwork.SWSpawnerRecord.d">
+            <summary>
+            data string
+            </summary>
+        </member>
+        <member name="F:SWNetwork.SWSpawnerRecord.positionX">
             <summary>
             position.
             </summary>
         </member>
-        <member name="F:SWNetwork.SWSpawnerRecord.rx">
+        <member name="F:SWNetwork.SWSpawnerRecord.rotationX">
             <summary>
             rotation.
             </summary>
