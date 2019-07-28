@@ -90,9 +90,9 @@ public class PlayerHP : MonoBehaviour
             // Call the DelayedRespawnPlayer() method you just added to the GameSceneManager.cs script. 
             gameSceneManager.DelayedRespawnPlayer();
 
-            // Ask the SceneSpawner to destroy the gameObject. 
-            // SceneSpawner will destroy the local Player and its remote duplicates.
-            NetworkClient.Instance.LastSpawner.DestroyGameObject(gameObject);
+            // NetworkID will find its SceneSpawner and remove its spawn records.
+            // The Networked GameObject will be destroyed across the network.
+            networkId.Destroy();
         }
     }
 
