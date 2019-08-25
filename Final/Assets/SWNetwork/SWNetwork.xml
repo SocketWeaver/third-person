@@ -303,6 +303,16 @@
             Invoked when the local player connected to the lobby server.
             </summary>
         </member>
+        <member name="E:SWNetwork.SWLobby.OnLobbyDisconnectedEvent">
+            <summary>
+            Invoked when the local player failed to connect to the lobby server.
+            </summary>
+        </member>
+        <member name="E:SWNetwork.SWLobby.OnLobbyReconnectedEvent">
+            <summary>
+            Invoked when the local player reconnected to the lobby server.
+            </summary>
+        </member>
         <member name="E:SWNetwork.SWLobby.OnPlayerMessageEvent">
             <summary>
             Invoked when a new player message is received.
@@ -359,6 +369,11 @@
             Invoked when the player is kicked from the room by the room owner.
             </summary>
         </member>
+        <member name="M:SWNetwork.SWLobby.Reconnect">
+            <summary>
+            Reconnect to the lobby server
+            </summary>
+        </member>
         <member name="P:SWNetwork.SWLobby.PlayerId">
             <summary>
             Local player's Id
@@ -373,7 +388,7 @@
         </member>
         <member name="P:SWNetwork.SWLobby.RoomData">
             <summary>
-            Room Information. null if the local player is not in a room.
+            Room Information. You need to call GetRoomCustomData() to load the room information. null if the local player is not in a room.
             </summary>
             <value>The room data.</value>
         </member>
@@ -536,6 +551,7 @@
         <member name="M:SWNetwork.SWLobby.ChangeRoomProgressData(System.Object,System.Action{System.Boolean,SWNetwork.SWLobbyError})">
             <summary>
             Called by room owners to begin an asynchronous operation to change the progress data of their rooms using the specified serializable object.
+            Progress can be used to store room's progress.
             </summary>
             <param name="progressData">Serializable object progress data.</param>
             <param name="callback">The method to invoke when the change room progress data operation is complete.</param>
@@ -681,6 +697,11 @@
             Gets the game server ping.
             </summary>
             <value>The game server ping.</value>
+        </member>
+        <member name="E:SWNetwork.NetworkClient.OnGameServerDisconnectedEvent">
+            <summary>
+            Invoked when the local player failed to receive the heartbeat reply from the room game server in the last 8 seconds.
+            </summary>
         </member>
         <member name="M:SWNetwork.NetworkClient.CheckIn(System.Action{System.Boolean,System.String})">
             <summary>

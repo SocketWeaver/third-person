@@ -98,7 +98,7 @@ public class GameSceneManager : MonoBehaviour
     }
 
     // OnSpawnerReady(bool alreadySetup) method is added to handle the On Ready Event.
-    public void OnSpawnerReady(bool alreadySetup)
+    public void OnSpawnerReady(bool alreadySetup, SceneSpawner sceneSpawner)
     {
         Debug.Log("OnSpawnerReady " + alreadySetup);
 
@@ -112,11 +112,11 @@ public class GameSceneManager : MonoBehaviour
             // we have 1 playerPrefabs so playerPrefabIndex is 0.
             // We have 4 spawnPoints so we generated a random int between 0 to 3.
             int spawnPointIndex = Random.Range(0, 3);
-            NetworkClient.Instance.LastSpawner.SpawnForPlayer(0, spawnPointIndex);
+            sceneSpawner.SpawnForPlayer(0, spawnPointIndex);
 
             // Tell the spawner that we have finished setting up the scene. 
             // alreadySetup will be true when SceneSpawn becomes ready next time.
-            NetworkClient.Instance.LastSpawner.PlayerFinishedSceneSetup();
+            sceneSpawner.PlayerFinishedSceneSetup();
         }
     }
 
