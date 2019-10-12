@@ -713,6 +713,14 @@
             Checking into the SocketWeaver services with specified player Id. Make sure the playerId is unique.
             </summary>
         </member>
+        <member name="M:SWNetwork.NetworkClient.CheckOut(System.Action{System.Boolean,System.String})">
+            <summary>
+            Checking out of the SocketWeaver services.
+            Disconnects from the room game servers and leaves the lobby room.
+            All gameplay API and lobby API will stop working.
+            </summary>
+            <param name="callback"></param>
+        </member>
         <member name="M:SWNetwork.NetworkClient.DisconnectFromRoom">
             <summary>
             Disconnects the local player from the room game servers.
@@ -1025,6 +1033,21 @@
             </summary>
             <value><c>true</c> if is ready; otherwise, <c>false</c>.</value>
         </member>
+        <member name="P:SWNetwork.SceneSpawner.NumberOfPlayerPrefabs">
+            <summary>
+            Number of player prefabs
+            </summary>
+        </member>
+        <member name="P:SWNetwork.SceneSpawner.NumberOfSpawnPoints">
+            <summary>
+            Number of spawn points
+            </summary>
+        </member>
+        <member name="P:SWNetwork.SceneSpawner.NumberOfNonPlayerPrefabs">
+            <summary>
+            Number of non-player prefabs
+            </summary>
+        </member>
         <member name="M:SWNetwork.SceneSpawner.SpawnForPlayer(System.Int32,System.Int32)">
             <summary>
             Spawns networked GameObject for player.
@@ -1083,20 +1106,32 @@
         </member>
         <member name="M:SWNetwork.SWNetworkMessage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:SWNetwork.SWNetworkMessage"/> class.
+            Initializes a new instance of SWNetworkMessage class.
             </summary>
         </member>
         <member name="M:SWNetwork.SWNetworkMessage.#ctor(System.Byte[],System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:SWNetwork.SWNetworkMessage"/> class.
+            Initializes a new instance of SWNetworkMessage class.
             </summary>
             <param name="arr">Arr.</param>
             <param name="deepCopy">If set to <c>true</c> deep copy.</param>
         </member>
-        <member name="M:SWNetwork.SWNetworkMessage.allRead">
+        <member name="M:SWNetwork.SWNetworkMessage.AllRead">
             <summary>
             Indicate whether the data in the message has been read completely.
             </summary>
+        </member>
+        <member name="M:SWNetwork.SWNetworkMessage.GetLength">
+            <summary>
+            Length of the byte array of the SWNetworkMessage
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SWNetwork.SWNetworkMessage.ToArray">
+            <summary>
+            The byte array of the SWNetworkMessage
+            </summary>
+            <returns></returns>
         </member>
         <member name="M:SWNetwork.SWNetworkMessage.Push(System.Boolean)">
             <summary>
@@ -1148,7 +1183,7 @@
             Push an UTF8 string value to the message. Max string length is 65,535.
             </summary>
         </member>
-        <member name="M:SWNetwork.SWNetworkMessage.pushByteArray(System.Byte[])">
+        <member name="M:SWNetwork.SWNetworkMessage.PushByteArray(System.Byte[])">
             <summary>
             Push a byte array to the message.
             </summary>

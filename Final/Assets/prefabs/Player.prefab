@@ -86,7 +86,6 @@ GameObject:
   - component: {fileID: 26}
   - component: {fileID: 36}
   - component: {fileID: 33}
-  - component: {fileID: 40}
   - component: {fileID: 43}
   - component: {fileID: 66}
   - component: {fileID: 65}
@@ -94,7 +93,7 @@ GameObject:
   - component: {fileID: 62}
   - component: {fileID: 63}
   - component: {fileID: 74}
-  - component: {fileID: 78}
+  - component: {fileID: 76}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -164,19 +163,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &40
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &43
 CharacterController:
   m_ObjectHideFlags: 0
@@ -416,7 +402,7 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: SWNetwork.SWRPCEvent, SWNetwork, Version=1.0.0.0, Culture=neutral,
         PublicKeyToken=null
---- !u!114 &78
+--- !u!114 &76
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
