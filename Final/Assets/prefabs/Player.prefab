@@ -173,7 +173,7 @@ BoxCollider:
   m_GameObject: {fileID: 12}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -256,8 +256,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  dynamicallySpawned: 1
+  fixedNetworkObjectID: 1
   showVisibleGizmo: 1
   Filterable: 0
+  SendRealtimeData: 1
   visibleSize: 1
 --- !u!114 &63
 MonoBehaviour:
@@ -469,6 +472,7 @@ MonoBehaviour:
       m_TypeName: SWNetwork.SWSyncedPropertyInitialFetchFinishedEvent, SWNetwork,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   restoreState: 1
+  AutoInitialization: 1
 --- !u!1 &13
 GameObject:
   m_ObjectHideFlags: 0

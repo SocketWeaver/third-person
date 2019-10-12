@@ -215,6 +215,7 @@ MonoBehaviour:
       m_TypeName: SWNetwork.SWSyncedPropertyInitialFetchFinishedEvent, SWNetwork,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   restoreState: 1
+  AutoInitialization: 1
   AgentId: 1
 --- !u!114 &47203783
 MonoBehaviour:
@@ -229,8 +230,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  dynamicallySpawned: 1
+  fixedNetworkObjectID: 1
   showVisibleGizmo: 1
   Filterable: 0
+  SendRealtimeData: 1
   visibleSize: 1
 --- !u!1 &142555660
 GameObject:
@@ -1695,6 +1699,7 @@ MonoBehaviour:
   playerPrefabsFoldout: 1
   nonPlayerPrefabsFoldout: 1
   spawnerId: 1
+  AutoInitialization: 1
   OnReady:
     m_PersistentCalls:
       m_Calls:
@@ -1729,8 +1734,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
+  dynamicallySpawned: 1
+  fixedNetworkObjectID: 1
   showVisibleGizmo: 1
   Filterable: 0
+  SendRealtimeData: 1
   visibleSize: 1
 --- !u!4 &969895539
 Transform:
